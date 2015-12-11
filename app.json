@@ -1,0 +1,10 @@
+{
+  "name": "Keycloak",
+  "description": "Keycloak on Swarm on Heroku",
+  "website": "https://github.com/davidillsley/keycloak-swarm-heroku",
+  "repository": "https://github.com/davidillsley/keycloak-swarm-heroku",
+  "success_url": "/auth",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ]
+}
