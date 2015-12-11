@@ -1,27 +1,18 @@
 package org.i5y.keycloak;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.ArtifactManager;
-import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.config.Undertow;
-import org.wildfly.swarm.config.datasources.DataSource;
 import org.wildfly.swarm.config.undertow.BufferCache;
 import org.wildfly.swarm.config.undertow.HandlerConfiguration;
 import org.wildfly.swarm.config.undertow.Server;
 import org.wildfly.swarm.config.undertow.ServletContainer;
 import org.wildfly.swarm.config.undertow.server.HTTPListener;
 import org.wildfly.swarm.config.undertow.server.Host;
-import org.wildfly.swarm.config.undertow.server.HttpsListener;
 import org.wildfly.swarm.config.undertow.servlet_container.JSPSetting;
 import org.wildfly.swarm.config.undertow.servlet_container.WebsocketsSetting;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.Fraction;
-import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.container.SocketBinding;
-import org.wildfly.swarm.datasources.DatasourceArchive;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
-import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.keycloak.server.KeycloakServerFraction;
 import org.wildfly.swarm.undertow.UndertowFraction;
 
@@ -36,8 +27,6 @@ public class Main {
         }
 
         Container container = new Container();
-
-        //postgres://postgres:mysecretpassword@192.168.99.100:32768/initdb
 
         // Extract the postgres connection details from the Heroku environment variable
         // (which is not a JDBC URL)
