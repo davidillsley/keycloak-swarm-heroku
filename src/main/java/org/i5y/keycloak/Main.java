@@ -41,6 +41,7 @@ public class Main {
                 })
                 .dataSource("KeycloakDS", (ds) -> {
                     ds.driverName("org.postgresql");
+                    ds.driverClass("org.postgresql.Driver");
                     ds.connectionUrl(databaseUrl.jdbcUrl());
                     ds.userName(databaseUrl.username());
                     ds.password(databaseUrl.password());
