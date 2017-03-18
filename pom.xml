@@ -14,8 +14,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha6-SNAPSHOT</version.wildfly-swarm>
-        <maven.min.version>3.2.1</maven.min.version>
+        <version.wildfly.swarm>2017.2.0</version.wildfly.swarm>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,7 +53,7 @@
                 <plugin>
                     <groupId>org.wildfly.swarm</groupId>
                     <artifactId>wildfly-swarm-plugin</artifactId>
-                    <version>${version.wildfly-swarm}</version>
+                    <version>${version.wildfly.swarm}</version>
                     <executions>
                         <execution>
                             <id>package</id>
@@ -91,8 +90,8 @@
     <dependencies>
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
-            <artifactId>keycloak-server-service</artifactId>
-            <version>${version.wildfly-swarm}</version>
+            <artifactId>keycloak-server</artifactId>
+            <version>${version.wildfly.swarm}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
