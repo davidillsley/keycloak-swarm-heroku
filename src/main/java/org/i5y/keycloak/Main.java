@@ -34,13 +34,14 @@ public class Main {
         // Configure the KeycloakDS datasource to use postgres
         DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
         datasourcesFraction
-//                .jdbcDriver("org.postgresql", (d) -> {
+                .jdbcDriver("org.postgresql", (d) -> {
 //                    d.driverDatasourceClassName("org.postgresql.Driver");
-//                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
-//                    d.driverModuleName("org.postgresql");
-//                })
+                    d.driverName("postgresql");
+                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
+                    d.driverModuleName("org.postgresql");
+                })
                 .dataSource("KeycloakDS", (ds) -> {
-                    ds.driverName("org.postgresql");
+                    ds.driverName("postgresql");
                     ds.connectionUrl(databaseUrl.jdbcUrl());
                     ds.userName(databaseUrl.username());
                     ds.password(databaseUrl.password());
