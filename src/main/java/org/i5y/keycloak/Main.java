@@ -41,6 +41,7 @@ public class Main {
                     d.driverModuleName("org.postgresql");
                 })
                 .dataSource("KeycloakDS", (ds) -> {
+                    ds.jndiName("java:jboss/datasources/KeycloakDS");
                     ds.driverName("org.postgresql");
                     ds.connectionUrl(databaseUrl.jdbcUrl());
                     ds.userName(databaseUrl.username());
