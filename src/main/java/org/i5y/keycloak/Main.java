@@ -44,6 +44,7 @@ public class Main {
                     ds.driverName("postgresql");
                     ds.connectionUrl(databaseUrl.jdbcUrl());
                     ds.userName(databaseUrl.username());
+                    ds.password(databaseUrl.password());
                 });
 //
         container.fraction(datasourcesFraction);
