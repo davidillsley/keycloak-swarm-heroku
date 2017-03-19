@@ -36,7 +36,7 @@ public class Main {
 //        DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
 //        datasourcesFraction
 //                .jdbcDriver("org.postgresql", (d) -> {
-////                    d.driverDatasourceClassName("org.postgresql.Driver");
+//                    d.driverDatasourceClassName("org.postgresql.Driver");
 //                    d.driverName("postgresql");
 //                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
 //                    d.driverModuleName("org.postgresql");
@@ -53,7 +53,7 @@ public class Main {
 
         // Set up container config to take advantage of HTTPS in heroku
 
-        container.socketBinding("standard-sockets", new SocketBinding("proxy-https").port(443));
+        container.socketBinding("standard-sockets", new SocketBinding("proxy-https").port(System.getenv("PORT")));
 
         UndertowFraction undertowFraction = new UndertowFraction();
         undertowFraction
