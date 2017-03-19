@@ -34,11 +34,6 @@ public class Main {
         // Configure the KeycloakDS datasource to use postgres
         DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
         datasourcesFraction
-//                .jdbcDriver("org.postgresql", (d) -> {
-//                    d.driverDatasourceClassName("org.postgresql.Driver");
-//                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
-//                    d.driverModuleName("org.postgresql");
-//                })
                 .dataSource("KeycloakDS", (ds) -> {
                     ds.jndiName("java:jboss/datasources/KeycloakDS");
                     ds.driverName("postgresql");
@@ -50,7 +45,6 @@ public class Main {
         container.fraction(datasourcesFraction);
 
         // Set up container config to take advantage of HTTPS in heroku
-
         container.socketBinding("standard-sockets", new SocketBinding("proxy-https").port(443));
 
         UndertowFraction undertowFraction = new UndertowFraction();
