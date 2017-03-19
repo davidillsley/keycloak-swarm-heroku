@@ -22,7 +22,7 @@ public class Main {
         // Heroku requires you bind to the specified PORT
         String port = System.getenv("PORT");
         if (port != null) {
-            System.setProperty("jboss.https.port", port);
+            System.setProperty("swarm.http.port", port);
         }
 
         Swarm container = new Swarm();
