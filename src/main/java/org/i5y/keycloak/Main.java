@@ -2,6 +2,7 @@ package org.i5y.keycloak;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.config.KeycloakServer;
 import org.wildfly.swarm.config.undertow.BufferCache;
 import org.wildfly.swarm.config.undertow.HandlerConfiguration;
 import org.wildfly.swarm.config.undertow.Server;
@@ -29,26 +30,26 @@ public class Main {
 
         // Extract the postgres connection details from the Heroku environment variable
         // (which is not a JDBC URL)
-        DatabaseUrl databaseUrl = DatabaseUrl.extract();
-
-        // Configure the KeycloakDS datasource to use postgres
-        DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
-        datasourcesFraction
-                .jdbcDriver("org.postgresql", (d) -> {
-//                    d.driverDatasourceClassName("org.postgresql.Driver");
-                    d.driverName("postgresql");
-                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
-                    d.driverModuleName("org.postgresql");
-                })
-                .dataSource("KeycloakDS", (ds) -> {
-                    ds.jndiName("java:jboss/datasources/KeycloakDS");
-                    ds.driverName("org.postgresql");
-                    ds.connectionUrl(databaseUrl.jdbcUrl());
-                    ds.userName(databaseUrl.username());
-                    ds.password(databaseUrl.password());
-                });
-
-        container.fraction(datasourcesFraction);
+//        DatabaseUrl databaseUrl = DatabaseUrl.extract();
+//
+//        // Configure the KeycloakDS datasource to use postgres
+//        DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
+//        datasourcesFraction
+//                .jdbcDriver("org.postgresql", (d) -> {
+////                    d.driverDatasourceClassName("org.postgresql.Driver");
+//                    d.driverName("postgresql");
+//                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
+//                    d.driverModuleName("org.postgresql");
+//                })
+//                .dataSource("KeycloakDS", (ds) -> {
+//                    ds.jndiName("java:jboss/datasources/KeycloakDS");
+//                    ds.driverName("org.postgresql");
+//                    ds.connectionUrl(databaseUrl.jdbcUrl());
+//                    ds.userName(databaseUrl.username());
+//                    ds.password(databaseUrl.password());
+//                });
+//
+//        container.fraction(datasourcesFraction);
 
         // Set up container config to take advantage of HTTPS in heroku
 
@@ -73,7 +74,7 @@ public class Main {
         // Finally, add KeycloakServer...
         KeycloakServerFraction keycloakServerFraction = new KeycloakServerFraction();
 
-        container.fraction(keycloakServerFraction);
+        container.fraction(keycloakServerFraction.applyDefaults());
 
         // And start!
         container.start();
