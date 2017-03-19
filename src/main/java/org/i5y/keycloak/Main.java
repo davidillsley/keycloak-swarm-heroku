@@ -46,7 +46,7 @@ public class Main {
                     ds.userName(databaseUrl.username());
                 });
 //
-//        container.fraction(datasourcesFraction);
+        container.fraction(datasourcesFraction);
 
         // Set up container config to take advantage of HTTPS in heroku
 
