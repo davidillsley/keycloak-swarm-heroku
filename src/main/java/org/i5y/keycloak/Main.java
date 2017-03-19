@@ -53,7 +53,7 @@ public class Main {
 
         // Set up container config to take advantage of HTTPS in heroku
 
-        container.socketBinding("standard", new SocketBinding("proxy-https").port(443));
+        container.socketBinding("standard-sockets", new SocketBinding("proxy-https").port(443));
 
         UndertowFraction undertowFraction = new UndertowFraction();
         undertowFraction
