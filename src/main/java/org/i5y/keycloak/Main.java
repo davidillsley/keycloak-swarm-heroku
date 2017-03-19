@@ -35,8 +35,7 @@ public class Main {
         DatasourcesFraction datasourcesFraction = new DatasourcesFraction();
         datasourcesFraction
                 .jdbcDriver("org.postgresql", (d) -> {
-//                    d.driverDatasourceClassName("org.postgresql.Driver");
-                    d.driverName("postgresql");
+                    d.driverDatasourceClassName("org.postgresql.Driver");
                     d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
                     d.driverModuleName("org.postgresql");
                 })
